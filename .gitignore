@@ -1,0 +1,14 @@
+# Intellij Idea project files
+.idea
+*.iml
+*.ipr
+*.iws
+
+# mac os x
+.DS_Store
+
+# NPM directory
+node_modules/
+
+# Distribution directory
+dist/
