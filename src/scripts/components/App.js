@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
+import LoginForm from './LoginForm';
+
 export default class App extends Component {
     render() {
         return (
             <div>
-                Hello World from React!
+                <LoginForm/>
             </div>
         );
     }
