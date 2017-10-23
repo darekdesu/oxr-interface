@@ -2,6 +2,7 @@ import { createAction } from 'redux-actions';
 
 import reducer from './exchangeRates';
 import * as actionTypes from '../consts/actionTypes';
+import { defaultBaseCurrency, defaultComparedCurrency } from '../consts/currencyTypes';
 
 describe('exchangeRates reducer', () => {
     it('should return the initial state', () =>
@@ -9,7 +10,10 @@ describe('exchangeRates reducer', () => {
             apiKey: null,
             values: {},
             isLoading: false,
-            isLoadError: false
+            isLoadError: false,
+            pickedDate: null,
+            pickedBaseCurrency: defaultBaseCurrency,
+            pickedComparedCurrency: defaultComparedCurrency
         }));
     it('should set isLoading and unset isLoadError on LOAD_EXCHANGE_RATES_REQUEST', () => {
         const previousState = {
@@ -27,7 +31,7 @@ describe('exchangeRates reducer', () => {
         expect(reducer(previousState, createAction(actionTypes.LOAD_EXCHANGE_RATES_REQUEST)())).toEqual(expectedState);
     });
 
-    it('should set value and unset isLoading on LOAD_EXCHANGE_RATES_SUCCESS', () => {
+    it('should set value and pickedDate and unset isLoading on LOAD_EXCHANGE_RATES_SUCCESS', () => {
         const previousState = {
             anotherField: 'test-data',
             values: {},
@@ -59,6 +63,9 @@ describe('exchangeRates reducer', () => {
                     }
                 }
             },
+            pickedDate: '2000-01-01',
+            pickedBaseCurrency: defaultBaseCurrency,
+            pickedComparedCurrency: defaultComparedCurrency,
             isLoading: false
         };
 
@@ -95,5 +102,53 @@ describe('exchangeRates reducer', () => {
         };
 
         expect(reducer(previousState, createAction(actionTypes.CHANGE_EXCHANGE_RATES_API_KEY)(actionPayload))).toEqual(expectedState);
+    });
+
+    it('should set pickedDate on CHANGE_EXCHANGE_RATES_PICKED_DATE', () => {
+        const previousState = {
+            anotherField: 'test-data',
+            pickedDate: '2000-01-01'
+        };
+
+        const actionPayload = '2017-12-31';
+
+        const expectedState = {
+            anotherField: 'test-data',
+            pickedDate: '2017-12-31'
+        };
+
+        expect(reducer(previousState, createAction(actionTypes.CHANGE_EXCHANGE_RATES_PICKED_DATE)(actionPayload))).toEqual(expectedState);
+    });
+
+    it('should set pickedBaseCurrency on CHANGE_EXCHANGE_RATES_PICKED_BASE_CURRENCY', () => {
+        const previousState = {
+            anotherField: 'test-data',
+            pickedBaseCurrency: 'USD'
+        };
+
+        const actionPayload = 'PLN';
+
+        const expectedState = {
+            anotherField: 'test-data',
+            pickedBaseCurrency: 'PLN'
+        };
+
+        expect(reducer(previousState, createAction(actionTypes.CHANGE_EXCHANGE_RATES_PICKED_BASE_CURRENCY)(actionPayload))).toEqual(expectedState);
+    });
+
+    it('should set pickedBaseCurrency on CHANGE_EXCHANGE_RATES_PICKED_COMPARED_CURRENCY', () => {
+        const previousState = {
+            anotherField: 'test-data',
+            pickedComparedCurrency: 'USD'
+        };
+
+        const actionPayload = 'PLN';
+
+        const expectedState = {
+            anotherField: 'test-data',
+            pickedComparedCurrency: 'PLN'
+        };
+
+        expect(reducer(previousState, createAction(actionTypes.CHANGE_EXCHANGE_RATES_PICKED_COMPARED_CURRENCY)(actionPayload))).toEqual(expectedState);
     });
 });

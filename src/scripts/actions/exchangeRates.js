@@ -6,6 +6,8 @@ import * as actionTypes from '../consts/actionTypes';
 import { dateFormat } from '../consts/dateTypes';
 
 const changeExchangeRatesApiKey = createAction(actionTypes.CHANGE_EXCHANGE_RATES_API_KEY);
+const changeExchangeRatesPickedComparedCurrency = createAction(actionTypes.CHANGE_EXCHANGE_RATES_PICKED_COMPARED_CURRENCY);
+
 const loadExchangeRatesRequest = createAction(actionTypes.LOAD_EXCHANGE_RATES_REQUEST);
 const loadExchangeRatesSuccess = createAction(actionTypes.LOAD_EXCHANGE_RATES_SUCCESS);
 const loadExchangeRatesFailure = createAction(actionTypes.LOAD_EXCHANGE_RATES_FAILURE);
@@ -38,5 +40,6 @@ const getExchangeRates = (date = null) => (dispatch, getStore) =>
 
 export {
     changeExchangeRatesApiKey,
+    changeExchangeRatesPickedComparedCurrency,
     getExchangeRates
 };

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import LoginForm from './LoginForm';
+import ExchangeRatesInterface from './ExchangeRatesInterface';
 
 export default class App extends Component {
     constructor(props) {
@@ -17,7 +18,7 @@ export default class App extends Component {
     }
 
     render() {
-        const { exchangeRates } = this.props;
+        const { exchangeRates, actions } = this.props;
         const showExchangeRatesInterface = Object.keys(exchangeRates.values).length > 0;
 
         return (
@@ -27,7 +28,10 @@ export default class App extends Component {
                     isLoadError={exchangeRates.isLoadError}
                     onSubmit={this.handleLoginFormSubmit}
                 />}
-                {showExchangeRatesInterface && 'Tutaj będzie panel dostęony po zalogowaniu się.'}
+                {showExchangeRatesInterface && <ExchangeRatesInterface
+                    exchangeRates={exchangeRates}
+                    changeComparedCurrency={actions.changeExchangeRatesPickedComparedCurrency}
+                />}
             </div>
         );
     }
