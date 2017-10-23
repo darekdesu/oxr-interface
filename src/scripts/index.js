@@ -1,9 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
 import 'babel-polyfill';
+import 'whatwg-fetch';
 import '../styles/index.scss';
 
-import App from './components/App';
+import AppWrapper from './containers/AppWrapper';
 
-ReactDOM.render(<App />, document.getElementById('oxr-app'));
+import configureStore from './store';
+const store = configureStore();
+
+ReactDOM.render(
+    <Provider store={store}>
+        <AppWrapper/>
+    </Provider>,
+    document.getElementById('oxr-app')
+);
