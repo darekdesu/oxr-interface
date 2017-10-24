@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Input, Segment } from 'semantic-ui-react';
+import { Grid, Input, Segment, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
@@ -27,6 +27,10 @@ export default class ExchangeRatesDatePicker extends Component {
                 disabled={isLoading}
                 loading={isLoading}
             >
+                <Header as="h3">
+                    Data porównania kursu walut
+                </Header>
+
                 <Grid textAlign="center" verticalAlign="middle">
                     <Grid.Column mobile={8} textAlign="right">
                         Wybierz datę by sprawdzić kurs wymiany z przeszłości:

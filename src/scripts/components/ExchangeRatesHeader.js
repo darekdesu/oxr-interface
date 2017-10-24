@@ -15,7 +15,7 @@ export default class ExchangeRatesHeader extends Component {
 
     render() {
         return ([
-            <Grid>
+            <Grid key={1}>
                 <Grid.Column mobile={8}>
                     <Header as="h1">
                         Konwerter walut
@@ -25,7 +25,7 @@ export default class ExchangeRatesHeader extends Component {
                     <Button primary size="large" onClick={this.handleClickLogout}>Wyloguj</Button>
                 </Grid.Column>
             </Grid>,
-            <Divider/>
+            <Divider key={2}/>
         ]);
     }
 }

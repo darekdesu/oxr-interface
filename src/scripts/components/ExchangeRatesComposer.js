@@ -5,18 +5,19 @@ import PropTypes from 'prop-types';
 import ExchangeRatesHeader from './ExchangeRatesHeader';
 import ExchangeRatesDatePicker from './ExchangeRatesDatePicker';
 import ExchangeRatesCurrencyCalculator from './ExchangeRatesCurrencyCalculator';
+import ExchangeRatesCurrencyChart from './ExchangeRatesCurrencyChart';
 
 export default class ExchangeRatesComposer extends Component {
     getExchangeRatesForPickedDate() {
-        return this.props.exchangeRates.values[this.props.exchangeRates.pickedDate];
+        return this.props.exchangeRates.values[this.props.exchangeRates.pickedDate].rates;
     }
 
-    getAvailableCurrenciesRatesForPickedDate() {
-        return Object.keys(this.getExchangeRatesForPickedDate().rates);
+    getAvailableCurrenciesRatesListForPickedDate() {
+        return Object.keys(this.getExchangeRatesForPickedDate());
     }
 
     getExchangeRateValueForPickedDateAndComparedCurrency() {
-        return this.getExchangeRatesForPickedDate().rates[this.props.exchangeRates.pickedComparedCurrency];
+        return this.getExchangeRatesForPickedDate()[this.props.exchangeRates.pickedComparedCurrency];
     }
 
     render() {
@@ -43,8 +44,13 @@ export default class ExchangeRatesComposer extends Component {
                         pickedBaseCurrency={exchangeRates.pickedBaseCurrency}
                         pickedComparedCurrency={exchangeRates.pickedComparedCurrency}
                         onChangeComparedCurrency={onChangeComparedCurrency}
-                        availableCurrencyRates={this.getAvailableCurrenciesRatesForPickedDate()}
+                        availableCurrencyRates={this.getAvailableCurrenciesRatesListForPickedDate()}
                         exchangeRateValue={this.getExchangeRateValueForPickedDateAndComparedCurrency()}
+                    />
+
+                    <ExchangeRatesCurrencyChart
+                        isLoading={exchangeRates.isLoading}
+                        currencyRates={this.getExchangeRatesForPickedDate()}
                     />
                 </Container>
             </div>

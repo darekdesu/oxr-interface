@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Dropdown, Input, Icon, Segment } from 'semantic-ui-react';
+import { Grid, Dropdown, Input, Icon, Segment, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import { moneyFormat } from '../utils/currency';
@@ -77,6 +77,10 @@ export default class ExchangeRatesCurrencyCalculator extends Component {
                 disabled={isLoading}
                 loading={isLoading}
             >
+                <Header as="h3">
+                    Kalkulator walut dla wybranej daty
+                </Header>
+
                 <Grid textAlign="center" verticalAlign="middle">
                     <Grid.Column mobile={5} textAlign="right">
                         <Icon name={defaultBaseCurrency.toLowerCase()}/> {defaultBaseCurrency}
@@ -98,7 +102,9 @@ export default class ExchangeRatesCurrencyCalculator extends Component {
 
                 <Grid textAlign="center">
                     <Grid.Column>
-                        Kurs wymiany: {exchangeRateValue}
+                        <Header as="h4">
+                            Kurs wymiany: {exchangeRateValue}
+                        </Header>
                     </Grid.Column>
                 </Grid>
 
