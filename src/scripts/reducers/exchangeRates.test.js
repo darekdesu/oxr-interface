@@ -104,22 +104,6 @@ describe('exchangeRates reducer', () => {
         expect(reducer(previousState, createAction(actionTypes.CHANGE_EXCHANGE_RATES_API_KEY)(actionPayload))).toEqual(expectedState);
     });
 
-    it('should set pickedDate on CHANGE_EXCHANGE_RATES_PICKED_DATE', () => {
-        const previousState = {
-            anotherField: 'test-data',
-            pickedDate: '2000-01-01'
-        };
-
-        const actionPayload = '2017-12-31';
-
-        const expectedState = {
-            anotherField: 'test-data',
-            pickedDate: '2017-12-31'
-        };
-
-        expect(reducer(previousState, createAction(actionTypes.CHANGE_EXCHANGE_RATES_PICKED_DATE)(actionPayload))).toEqual(expectedState);
-    });
-
     it('should set pickedBaseCurrency on CHANGE_EXCHANGE_RATES_PICKED_BASE_CURRENCY', () => {
         const previousState = {
             anotherField: 'test-data',

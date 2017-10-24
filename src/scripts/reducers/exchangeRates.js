@@ -49,10 +49,6 @@ export default handleActions({
         ...state,
         apiKey: action.payload
     }),
-    [actionTypes.CHANGE_EXCHANGE_RATES_PICKED_DATE]: (state, action) => ({
-        ...state,
-        pickedDate: action.payload
-    }),
     [actionTypes.CHANGE_EXCHANGE_RATES_PICKED_BASE_CURRENCY]: (state, action) => ({
         ...state,
         pickedBaseCurrency: action.payload
@@ -60,5 +56,8 @@ export default handleActions({
     [actionTypes.CHANGE_EXCHANGE_RATES_PICKED_COMPARED_CURRENCY]: (state, action) => ({
         ...state,
         pickedComparedCurrency: action.payload
+    }),
+    [actionTypes.LOGOUT]: () => ({
+        ...initialState
     })
 }, initialState);

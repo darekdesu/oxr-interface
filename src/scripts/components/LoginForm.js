@@ -60,7 +60,7 @@ export default class LoginForm extends Component {
                 <Grid textAlign="center">
                     <Grid.Column textAlign="left" mobile={16} tablet={8} computer={6}>
                         <Header as="h2" textAlign="center">
-                            Logowanie do Open Exchange Rates
+                            Logowanie do konwertera walut
                         </Header>
                         <Form onSubmit={this.handleSubmit} size="large">
                             <Segment stacked>
@@ -72,7 +72,7 @@ export default class LoginForm extends Component {
                                     fluid
                                     icon="privacy"
                                     iconPosition="left"
-                                    placeholder="Podaj klucz API"
+                                    placeholder="Podaj klucz API dla Open Exchange Rates"
                                 />
                                 <Message
                                     visible={!apiKey.isValid}

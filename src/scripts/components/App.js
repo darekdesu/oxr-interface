@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import LoginForm from './LoginForm';
-import ExchangeRatesInterface from './ExchangeRatesInterface';
+import ExchangeRatesComposer from './ExchangeRatesComposer';
+import Credentials from './Credentials';
 
 export default class App extends Component {
     constructor(props) {
@@ -19,19 +20,26 @@ export default class App extends Component {
 
     render() {
         const { exchangeRates, actions } = this.props;
-        const showExchangeRatesInterface = Object.keys(exchangeRates.values).length > 0;
+        const exchangeRatesValuesList = Object.keys(exchangeRates.values);
+
+        const showLoginForm = exchangeRatesValuesList.length === 0;
+        const showExchangeRatesComposer = exchangeRatesValuesList.length > 0;
 
         return (
             <div>
-                {!showExchangeRatesInterface && <LoginForm
+                {showLoginForm && <LoginForm
                     isLoading={exchangeRates.isLoading}
                     isLoadError={exchangeRates.isLoadError}
                     onSubmit={this.handleLoginFormSubmit}
                 />}
-                {showExchangeRatesInterface && <ExchangeRatesInterface
+                {showExchangeRatesComposer && <ExchangeRatesComposer
                     exchangeRates={exchangeRates}
-                    changeComparedCurrency={actions.changeExchangeRatesPickedComparedCurrency}
+                    onChangeComparedCurrency={actions.changeExchangeRatesPickedComparedCurrency}
+                    onChangeDate={actions.getExchangeRates}
+                    onLogout={actions.logout}
                 />}
+
+                <Credentials/>
             </div>
         );
     }

@@ -1,9 +1,19 @@
 @import '~semantic-ui-css/semantic.min.css';
+@import '~currency-flags/dist/currency-flags.min.css';
+@import '~react-datepicker/dist/react-datepicker.css';
+
+body {
+  background: #eceff1;
+}
 
 .login-form {
   margin-top: 2em;
 }
 
-.exchange-rates-interface {
+.exchange-rates-composer {
+  margin-top: 2em;
+}
+
+.credentials {
   margin-top: 2em;
 }

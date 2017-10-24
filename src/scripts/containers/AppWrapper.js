@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 
 import App from '../components/App';
 
-import * as exchangeRates from '../actions/exchangeRates';
+import * as commonActions from '../actions/common';
+import * as exchangeRatesActions from '../actions/exchangeRates';
 
 class AppWrapper extends Component {
     render() {
@@ -20,7 +21,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     actions: {
-        ...bindActionCreators(exchangeRates, dispatch)
+        ...bindActionCreators(commonActions, dispatch),
+        ...bindActionCreators(exchangeRatesActions, dispatch)
     }
 });
 
