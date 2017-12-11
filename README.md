@@ -1,4 +1,4 @@
-oxr-dd
+Open Exchange Rates Interface
 =====
 
 Open Exchange Rates interface by Dariusz Dubicki
