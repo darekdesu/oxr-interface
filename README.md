@@ -1,8 +1,6 @@
 Open Exchange Rates Interface
 =====
 
-Open Exchange Rates interface by Dariusz Dubicki
-
 Requires:
 * Node 8.2+
 * Npm 5+
